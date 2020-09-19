@@ -30,7 +30,7 @@ class Countdown extends React.Component {
       this.setState({ count: newCount >= 0 ? newCount : 0 });
     }, 1000);
   }
-  handleCountdown(seconds) {
+  handleSetCountdown(seconds) {
     this.setState({
       count: seconds,
       running: true,
@@ -41,7 +41,9 @@ class Countdown extends React.Component {
     return (
       <div>
         <Clock timeInSeconds={this.state.count} />
-        <CountdownForm onSetCountdownTime={this.handleCountdown.bind(this)} />
+        <CountdownForm
+          onSetCountdownTime={this.handleSetCountdown.bind(this)}
+        />
         {/* <CountdownForm onSetCountdownTime={(val) => this.changeCount(val)} /> */}
       </div>
     );

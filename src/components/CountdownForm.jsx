@@ -8,7 +8,7 @@ class CountdownForm extends React.Component {
     // if (parseInt(secondsStr) < 0 || isNaN(secondsStr)) {
     //   return;
     // }
-    if (secondsStr.match(/[0-9]/)) {
+    if (secondsStr.match(/^[0-9]*$/)) {
       this.refs.seconds.value = "";
       this.props.onSetCountdownTime(parseInt(secondsStr, 10));
     }
