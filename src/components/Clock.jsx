@@ -36,6 +36,9 @@ class Clock extends React.Component {
       }
       this.timer(timeInSeconds);
       timeInSeconds = timeInSeconds - 1;
+      if (timeInSeconds === 0) {
+        return;
+      }
     }, 1000);
   }
 
@@ -46,7 +49,9 @@ class Clock extends React.Component {
     return (
       <div className="clock">
         <span className="clock-text">
-          <span>{this.getTime(timeInSeconds)}</span>
+          <span>
+            {timeInSeconds === 0 ? "00:00" : this.getTime(timeInSeconds)}
+          </span>
         </span>
       </div>
     );
