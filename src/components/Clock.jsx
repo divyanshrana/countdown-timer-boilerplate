@@ -20,6 +20,16 @@ class Clock extends React.Component {
     document.getElementsByClassName("clock-text")[0].innerHTML = time;
   }
   getTime(timeInSeconds) {
+    if (timeInSeconds === 0) {
+      return "00:00";
+    }
+
+    if (timeInSeconds < 0) {
+      return;
+    }
+    this.timer(timeInSeconds);
+    timeInSeconds = timeInSeconds - 1;
+
     this.myInterval = setInterval(() => {
       if (timeInSeconds < 0) {
         return;
@@ -31,13 +41,12 @@ class Clock extends React.Component {
 
   render() {
     var { timeInSeconds } = this.props;
-    let temp = "0" + 0 + ":0" + 0;
 
     //Keep the classes name. Try to inject your code and do not remove existing code
     return (
       <div className="clock">
         <span className="clock-text">
-          <div>{timeInSeconds ? this.getTime(timeInSeconds) : temp}</div>
+          <span>{this.getTime(timeInSeconds)}</span>
         </span>
       </div>
     );

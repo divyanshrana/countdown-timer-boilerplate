@@ -9,7 +9,7 @@ class CountdownForm extends React.Component {
       return;
     }
 
-    this.props.onSetCountdownTime(secondsStr);
+    this.props.onSetCountdownTime(parseInt(secondsStr));
   }
 
   render() {
