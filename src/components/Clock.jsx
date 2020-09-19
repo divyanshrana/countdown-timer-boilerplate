@@ -15,32 +15,29 @@ class Clock extends React.Component {
 
     return minutes + ":" + seconds;
   }
-  timer(timeInSeconds) {
-    var time = this.formatTime(timeInSeconds);
-    document.getElementsByClassName("clock-text")[0].innerHTML = time;
-  }
-  getTime(timeInSeconds) {
-    if (timeInSeconds === 0) {
-      return "00:00";
-    }
+  //   timer(timeInSeconds) {
+  //     var time = this.formatTime(timeInSeconds);
+  //     document.getElementsByClassName("clock-text")[0].innerHTML = time;
+  //   }
+  //   getTime(timeInSeconds) {
+  //     if (timeInSeconds === 0) {
+  //       return "00:00";
+  //     }
 
-    if (timeInSeconds < 0) {
-      return;
-    }
-    this.timer(timeInSeconds);
-    timeInSeconds = timeInSeconds - 1;
+  //     if (timeInSeconds < 0) {
+  //       return;
+  //     }
+  //     this.timer(timeInSeconds);
+  //     timeInSeconds = timeInSeconds - 1;
 
-    this.myInterval = setInterval(() => {
-      if (timeInSeconds < 0) {
-        return;
-      }
-      this.timer(timeInSeconds);
-      timeInSeconds = timeInSeconds - 1;
-      if (timeInSeconds === 0) {
-        return;
-      }
-    }, 1000);
-  }
+  //     this.myInterval = setInterval(() => {
+  //       if (timeInSeconds < 0) {
+  //         return;
+  //       }
+  //       this.timer(timeInSeconds);
+  //       timeInSeconds = timeInSeconds - 1;
+  //     }, 1000);
+  //   }
 
   render() {
     var { timeInSeconds } = this.props;
@@ -49,9 +46,8 @@ class Clock extends React.Component {
     return (
       <div className="clock">
         <span className="clock-text">
-          <span>
-            {timeInSeconds === 0 ? "00:00" : this.getTime(timeInSeconds)}
-          </span>
+          <span>{this.formatTime(timeInSeconds)}</span>
+          {/* <span>{this.getTime(timeInSeconds)}</span> */}
         </span>
       </div>
     );
